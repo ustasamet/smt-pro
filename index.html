@@ -6,7 +6,6 @@
 <title>SMT PRO — Samet Method Trading</title>
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
@@ -153,34 +152,202 @@ textarea { font-family:var(--font-body); resize:vertical; }
 <body>
 <div id="root"></div>
 
-<script type="text/babel" data-presets="react">
-const { useState, useEffect, useMemo } = React;
+<script>
+const {
+  useState,
+  useEffect,
+  useMemo
+} = React;
 
 /* ---------------------------------------------------------
    Minimal inline icon set (no external icon library needed)
 --------------------------------------------------------- */
-function Icon({ name, size = 14, style }) {
-  const s = { width: size, height: size, ...style };
-  const common = { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round", style: s };
+function Icon({
+  name,
+  size = 14,
+  style
+}) {
+  const s = {
+    width: size,
+    height: size,
+    ...style
+  };
+  const common = {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    style: s
+  };
   switch (name) {
-    case "plus": return <svg {...common}><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>;
-    case "x": return <svg {...common}><line x1="6" y1="6" x2="18" y2="18" /><line x1="18" y1="6" x2="6" y2="18" /></svg>;
-    case "check": return <svg {...common}><polyline points="4,13 9,18 20,6" /></svg>;
-    case "chevronDown": return <svg {...common}><polyline points="6,9 12,15 18,9" /></svg>;
-    case "chevronUp": return <svg {...common}><polyline points="18,15 12,9 6,15" /></svg>;
-    case "trendUp": return <svg {...common}><polyline points="3,17 10,10 14,14 21,6" /><polyline points="15,6 21,6 21,12" /></svg>;
-    case "trendDown": return <svg {...common}><polyline points="3,7 10,14 14,10 21,18" /><polyline points="15,18 21,18 21,12" /></svg>;
-    case "trash": return <svg {...common}><polyline points="3,6 5,6 21,6" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" /></svg>;
-    case "filter": return <svg {...common}><polygon points="4,4 20,4 14,12 14,19 10,21 10,12" /></svg>;
-    case "save": return <svg {...common}><path d="M5 3h11l4 4v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" /><path d="M8 3v6h8V3" /><path d="M8 21v-6h8v6" /></svg>;
-    case "alert": return <svg {...common}><path d="M12 3l10 18H2z" /><line x1="12" y1="9" x2="12" y2="14" /><circle cx="12" cy="17.5" r="0.6" fill="currentColor" stroke="none" /></svg>;
-    case "gauge": return <svg {...common}><path d="M4 15a8 8 0 0 1 16 0" /><line x1="12" y1="15" x2="16" y2="10" /><circle cx="12" cy="15" r="1" fill="currentColor" stroke="none" /></svg>;
-    case "grid": return <svg {...common}><rect x="3" y="3" width="8" height="8" rx="1" /><rect x="13" y="3" width="8" height="8" rx="1" /><rect x="3" y="13" width="8" height="8" rx="1" /><rect x="13" y="13" width="8" height="8" rx="1" /></svg>;
-    case "flask": return <svg {...common}><path d="M9 3h6" /><path d="M10 3v6l-6 10a1 1 0 0 0 .9 1.5h14.2A1 1 0 0 0 20 19L14 9V3" /></svg>;
-    case "radio": return <svg {...common}><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none" /><path d="M8 12a4 4 0 0 1 8 0" /><path d="M5 12a7 7 0 0 1 14 0" /></svg>;
-    case "settings": return <svg {...common}><circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" /></svg>;
-    case "image": return <svg {...common}><rect x="3" y="4" width="18" height="16" rx="2" /><circle cx="8.5" cy="9.5" r="1.5" /><path d="M21 16l-5-5-5 5-3-3-3 3" /></svg>;
-    default: return null;
+    case "plus":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("line", {
+        x1: "12",
+        y1: "5",
+        x2: "12",
+        y2: "19"
+      }), /*#__PURE__*/React.createElement("line", {
+        x1: "5",
+        y1: "12",
+        x2: "19",
+        y2: "12"
+      }));
+    case "x":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("line", {
+        x1: "6",
+        y1: "6",
+        x2: "18",
+        y2: "18"
+      }), /*#__PURE__*/React.createElement("line", {
+        x1: "18",
+        y1: "6",
+        x2: "6",
+        y2: "18"
+      }));
+    case "check":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("polyline", {
+        points: "4,13 9,18 20,6"
+      }));
+    case "chevronDown":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("polyline", {
+        points: "6,9 12,15 18,9"
+      }));
+    case "chevronUp":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("polyline", {
+        points: "18,15 12,9 6,15"
+      }));
+    case "trendUp":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("polyline", {
+        points: "3,17 10,10 14,14 21,6"
+      }), /*#__PURE__*/React.createElement("polyline", {
+        points: "15,6 21,6 21,12"
+      }));
+    case "trendDown":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("polyline", {
+        points: "3,7 10,14 14,10 21,18"
+      }), /*#__PURE__*/React.createElement("polyline", {
+        points: "15,18 21,18 21,12"
+      }));
+    case "trash":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("polyline", {
+        points: "3,6 5,6 21,6"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"
+      }));
+    case "filter":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("polygon", {
+        points: "4,4 20,4 14,12 14,19 10,21 10,12"
+      }));
+    case "save":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("path", {
+        d: "M5 3h11l4 4v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M8 3v6h8V3"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M8 21v-6h8v6"
+      }));
+    case "alert":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("path", {
+        d: "M12 3l10 18H2z"
+      }), /*#__PURE__*/React.createElement("line", {
+        x1: "12",
+        y1: "9",
+        x2: "12",
+        y2: "14"
+      }), /*#__PURE__*/React.createElement("circle", {
+        cx: "12",
+        cy: "17.5",
+        r: "0.6",
+        fill: "currentColor",
+        stroke: "none"
+      }));
+    case "gauge":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("path", {
+        d: "M4 15a8 8 0 0 1 16 0"
+      }), /*#__PURE__*/React.createElement("line", {
+        x1: "12",
+        y1: "15",
+        x2: "16",
+        y2: "10"
+      }), /*#__PURE__*/React.createElement("circle", {
+        cx: "12",
+        cy: "15",
+        r: "1",
+        fill: "currentColor",
+        stroke: "none"
+      }));
+    case "grid":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("rect", {
+        x: "3",
+        y: "3",
+        width: "8",
+        height: "8",
+        rx: "1"
+      }), /*#__PURE__*/React.createElement("rect", {
+        x: "13",
+        y: "3",
+        width: "8",
+        height: "8",
+        rx: "1"
+      }), /*#__PURE__*/React.createElement("rect", {
+        x: "3",
+        y: "13",
+        width: "8",
+        height: "8",
+        rx: "1"
+      }), /*#__PURE__*/React.createElement("rect", {
+        x: "13",
+        y: "13",
+        width: "8",
+        height: "8",
+        rx: "1"
+      }));
+    case "flask":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("path", {
+        d: "M9 3h6"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M10 3v6l-6 10a1 1 0 0 0 .9 1.5h14.2A1 1 0 0 0 20 19L14 9V3"
+      }));
+    case "radio":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("circle", {
+        cx: "12",
+        cy: "12",
+        r: "2",
+        fill: "currentColor",
+        stroke: "none"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M8 12a4 4 0 0 1 8 0"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M5 12a7 7 0 0 1 14 0"
+      }));
+    case "settings":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("circle", {
+        cx: "12",
+        cy: "12",
+        r: "3"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"
+      }));
+    case "image":
+      return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("rect", {
+        x: "3",
+        y: "4",
+        width: "18",
+        height: "16",
+        rx: "2"
+      }), /*#__PURE__*/React.createElement("circle", {
+        cx: "8.5",
+        cy: "9.5",
+        r: "1.5"
+      }), /*#__PURE__*/React.createElement("path", {
+        d: "M21 16l-5-5-5 5-3-3-3 3"
+      }));
+    default:
+      return null;
   }
 }
 
@@ -193,36 +360,79 @@ const BIAS = ["Bullish", "Bearish", "Range"];
 const PD = ["Premium", "Discount", "Equilibrium"];
 const GRADES = ["A+", "A", "B", "C"];
 const RESULTS = ["Win", "Loss", "BE"];
-
-const CHECKLIST = [
-  { key: "htfBias", label: "HTF Bias" },
-  { key: "dolConfirmed", label: "Draw on Liquidity" },
-  { key: "pdConfirmed", label: "Premium / Discount" },
-  { key: "sweep", label: "Sweep" },
-  { key: "displacement", label: "Displacement" },
-  { key: "fvg", label: "FVG" },
-  { key: "pullback", label: "Pullback" },
-  { key: "mss", label: "MSS" },
-  { key: "kzConfirmed", label: "Kill Zone" },
-];
-
+const CHECKLIST = [{
+  key: "htfBias",
+  label: "HTF Bias"
+}, {
+  key: "dolConfirmed",
+  label: "Draw on Liquidity"
+}, {
+  key: "pdConfirmed",
+  label: "Premium / Discount"
+}, {
+  key: "sweep",
+  label: "Sweep"
+}, {
+  key: "displacement",
+  label: "Displacement"
+}, {
+  key: "fvg",
+  label: "FVG"
+}, {
+  key: "pullback",
+  label: "Pullback"
+}, {
+  key: "mss",
+  label: "MSS"
+}, {
+  key: "kzConfirmed",
+  label: "Kill Zone"
+}];
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 const todayStr = () => new Date().toISOString().slice(0, 10);
-const num = (v, d = 0) => (v === "" || v === null || v === undefined || isNaN(v) ? d : Number(v));
-const fmt1 = (v) => (Number.isFinite(v) ? v.toFixed(1) : "0.0");
-const fmt2 = (v) => (Number.isFinite(v) ? v.toFixed(2) : "0.00");
-
-const emptyTrade = (mode) => ({
-  id: uid(), mode, date: todayStr(), pair: "XAUUSD", timeframe: "15m", direction: "Long",
-  weeklyBias: "Bullish", dailyBias: "Bullish", pd: "Discount", dol: "", asiaHigh: "", asiaLow: "",
-  dr: "", idr: "", killzone: "London",
-  htfBias: false, dolConfirmed: false, pdConfirmed: false, sweep: false, displacement: false,
-  fvg: false, pullback: false, mss: false, kzConfirmed: false,
-  riskPct: 1, rr: 3, setupGrade: "A", result: "Win", achievedR: 0,
-  screenshotBefore: "", screenshotAfter: "", note: "",
+const num = (v, d = 0) => v === "" || v === null || v === undefined || isNaN(v) ? d : Number(v);
+const fmt1 = v => Number.isFinite(v) ? v.toFixed(1) : "0.0";
+const fmt2 = v => Number.isFinite(v) ? v.toFixed(2) : "0.00";
+const emptyTrade = mode => ({
+  id: uid(),
+  mode,
+  date: todayStr(),
+  pair: "XAUUSD",
+  timeframe: "15m",
+  direction: "Long",
+  weeklyBias: "Bullish",
+  dailyBias: "Bullish",
+  pd: "Discount",
+  dol: "",
+  asiaHigh: "",
+  asiaLow: "",
+  dr: "",
+  idr: "",
+  killzone: "London",
+  htfBias: false,
+  dolConfirmed: false,
+  pdConfirmed: false,
+  sweep: false,
+  displacement: false,
+  fvg: false,
+  pullback: false,
+  mss: false,
+  kzConfirmed: false,
+  riskPct: 1,
+  rr: 3,
+  setupGrade: "A",
+  result: "Win",
+  achievedR: 0,
+  screenshotBefore: "",
+  screenshotAfter: "",
+  note: ""
 });
-
-const defaultAccount = { name: "Funded Account", size: 100000, dailyLimitPct: 4, maxDrawdownPct: 8 };
+const defaultAccount = {
+  name: "Funded Account",
+  size: 100000,
+  dailyLimitPct: 4,
+  maxDrawdownPct: 8
+};
 
 /* ---------------------------------------------------------
    Storage — localStorage (this file is self-hosted, no Claude API)
@@ -231,67 +441,110 @@ function loadKey(key, fallback) {
   try {
     const raw = localStorage.getItem(key);
     return raw ? JSON.parse(raw) : fallback;
-  } catch { return fallback; }
+  } catch {
+    return fallback;
+  }
 }
 function saveKey(key, value) {
-  try { localStorage.setItem(key, JSON.stringify(value)); }
-  catch (e) { console.error("storage save failed", e); }
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (e) {
+    console.error("storage save failed", e);
+  }
 }
-
 function computeStats(list) {
   const total = list.length;
-  const wins = list.filter((t) => t.result === "Win");
-  const losses = list.filter((t) => t.result === "Loss");
-  const winRate = total ? (wins.length / total) * 100 : 0;
+  const wins = list.filter(t => t.result === "Win");
+  const losses = list.filter(t => t.result === "Loss");
+  const winRate = total ? wins.length / total * 100 : 0;
   const grossWin = wins.reduce((s, t) => s + Math.max(0, num(t.achievedR)), 0);
   const grossLoss = Math.abs(losses.reduce((s, t) => s + Math.min(0, num(t.achievedR)), 0));
   const pf = grossLoss > 0 ? grossWin / grossLoss : grossWin > 0 ? Infinity : 0;
   const avgR = total ? list.reduce((s, t) => s + num(t.achievedR), 0) / total : 0;
-  return { total, winRate, pf, avgR };
+  return {
+    total,
+    winRate,
+    pf,
+    avgR
+  };
 }
 
 /* ---------------------------------------------------------
    Small UI atoms
 --------------------------------------------------------- */
-function Pill({ active, onClick, children, icon }) {
-  return (
-    <button className={`pill ${active ? "pill-active" : ""}`} onClick={onClick} type="button">
-      {icon && <Icon name={icon} size={13} />}
-      {children}
-    </button>
-  );
+function Pill({
+  active,
+  onClick,
+  children,
+  icon
+}) {
+  return /*#__PURE__*/React.createElement("button", {
+    className: `pill ${active ? "pill-active" : ""}`,
+    onClick: onClick,
+    type: "button"
+  }, icon && /*#__PURE__*/React.createElement(Icon, {
+    name: icon,
+    size: 13
+  }), children);
 }
-function StatCard({ label, value, sub, tone }) {
-  return (
-    <div className="stat-card">
-      <div className="stat-label">{label}</div>
-      <div className={`stat-value ${tone || ""}`}>{value}</div>
-      {sub && <div className="stat-sub">{sub}</div>}
-    </div>
-  );
+function StatCard({
+  label,
+  value,
+  sub,
+  tone
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "stat-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "stat-label"
+  }, label), /*#__PURE__*/React.createElement("div", {
+    className: `stat-value ${tone || ""}`
+  }, value), sub && /*#__PURE__*/React.createElement("div", {
+    className: "stat-sub"
+  }, sub));
 }
-function ConfluenceChain({ trade, onToggle, compact }) {
-  return (
-    <div className={`chain ${compact ? "chain-compact" : ""}`}>
-      {CHECKLIST.map((c, i) => (
-        <div className="chain-node-wrap" key={c.key}>
-          <button type="button" className={`chain-node ${trade[c.key] ? "chain-node-on" : ""}`} onClick={() => onToggle(c.key)} title={c.label}>
-            {trade[c.key] ? <Icon name="check" size={12} /> : <span className="chain-dot" />}
-          </button>
-          {!compact && <span className="chain-label">{c.label}</span>}
-          {i < CHECKLIST.length - 1 && <span className="chain-line" style={trade[c.key] ? { background: "var(--gold)" } : undefined} />}
-        </div>
-      ))}
-    </div>
-  );
+function ConfluenceChain({
+  trade,
+  onToggle,
+  compact
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: `chain ${compact ? "chain-compact" : ""}`
+  }, CHECKLIST.map((c, i) => /*#__PURE__*/React.createElement("div", {
+    className: "chain-node-wrap",
+    key: c.key
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: `chain-node ${trade[c.key] ? "chain-node-on" : ""}`,
+    onClick: () => onToggle(c.key),
+    title: c.label
+  }, trade[c.key] ? /*#__PURE__*/React.createElement(Icon, {
+    name: "check",
+    size: 12
+  }) : /*#__PURE__*/React.createElement("span", {
+    className: "chain-dot"
+  })), !compact && /*#__PURE__*/React.createElement("span", {
+    className: "chain-label"
+  }, c.label), i < CHECKLIST.length - 1 && /*#__PURE__*/React.createElement("span", {
+    className: "chain-line",
+    style: trade[c.key] ? {
+      background: "var(--gold)"
+    } : undefined
+  }))));
 }
-function Field({ label, children, span }) {
-  return (
-    <label className="field" style={span ? { gridColumn: `span ${span}` } : undefined}>
-      <span className="field-label">{label}</span>
-      {children}
-    </label>
-  );
+function Field({
+  label,
+  children,
+  span
+}) {
+  return /*#__PURE__*/React.createElement("label", {
+    className: "field",
+    style: span ? {
+      gridColumn: `span ${span}`
+    } : undefined
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "field-label"
+  }, label), children);
 }
 
 /* ---------------------------------------------------------
@@ -308,31 +561,61 @@ function SMTPro() {
   const [liveFormOpen, setLiveFormOpen] = useState(false);
   const [expandedId, setExpandedId] = useState(null);
   const [accountEditOpen, setAccountEditOpen] = useState(false);
-
-  const persistTrades = (next) => { setTrades(next); saveKey("smtpro:trades", next); };
-  const persistAccount = (next) => { setAccount(next); saveKey("smtpro:live-account", next); };
-
-  const researchTrades = useMemo(() => trades.filter((t) => t.mode === "research"), [trades]);
-  const liveTrades = useMemo(() => trades.filter((t) => t.mode === "live"), [trades]);
-  const confluenceCount = (t) => CHECKLIST.filter((c) => t[c.key]).length;
-
-  const saveDraft = () => { persistTrades([draft, ...trades]); setDraft(emptyTrade("research")); setFormOpen(false); };
-  const deleteTrade = (id) => persistTrades(trades.filter((t) => t.id !== id));
-  const saveLiveDraft = () => { persistTrades([liveDraft, ...trades]); setLiveDraft(emptyTrade("live")); setLiveFormOpen(false); };
-
+  const persistTrades = next => {
+    setTrades(next);
+    saveKey("smtpro:trades", next);
+  };
+  const persistAccount = next => {
+    setAccount(next);
+    saveKey("smtpro:live-account", next);
+  };
+  const researchTrades = useMemo(() => trades.filter(t => t.mode === "research"), [trades]);
+  const liveTrades = useMemo(() => trades.filter(t => t.mode === "live"), [trades]);
+  const confluenceCount = t => CHECKLIST.filter(c => t[c.key]).length;
+  const saveDraft = () => {
+    persistTrades([draft, ...trades]);
+    setDraft(emptyTrade("research"));
+    setFormOpen(false);
+  };
+  const deleteTrade = id => persistTrades(trades.filter(t => t.id !== id));
+  const saveLiveDraft = () => {
+    persistTrades([liveDraft, ...trades]);
+    setLiveDraft(emptyTrade("live"));
+    setLiveFormOpen(false);
+  };
   const byPair = useMemo(() => {
     const groups = {};
-    researchTrades.forEach((t) => { groups[t.pair] = groups[t.pair] || []; groups[t.pair].push(t); });
-    return Object.entries(groups).map(([pair, list]) => ({ pair, ...computeStats(list) })).sort((a, b) => b.total - a.total);
+    researchTrades.forEach(t => {
+      groups[t.pair] = groups[t.pair] || [];
+      groups[t.pair].push(t);
+    });
+    return Object.entries(groups).map(([pair, list]) => ({
+      pair,
+      ...computeStats(list)
+    })).sort((a, b) => b.total - a.total);
   }, [researchTrades]);
   const overall = useMemo(() => computeStats(researchTrades), [researchTrades]);
-
-  const [labFilters, setLabFilters] = useState({ pairs: [], killzones: [], directions: [], grades: [], results: [], sweep: false, displacement: false, mss: false, pullback: false });
-  const toggleArr = (field, val) => setLabFilters((f) => ({ ...f, [field]: f[field].includes(val) ? f[field].filter((x) => x !== val) : [...f[field], val] }));
-  const toggleBool = (field) => setLabFilters((f) => ({ ...f, [field]: !f[field] }));
-
+  const [labFilters, setLabFilters] = useState({
+    pairs: [],
+    killzones: [],
+    directions: [],
+    grades: [],
+    results: [],
+    sweep: false,
+    displacement: false,
+    mss: false,
+    pullback: false
+  });
+  const toggleArr = (field, val) => setLabFilters(f => ({
+    ...f,
+    [field]: f[field].includes(val) ? f[field].filter(x => x !== val) : [...f[field], val]
+  }));
+  const toggleBool = field => setLabFilters(f => ({
+    ...f,
+    [field]: !f[field]
+  }));
   const labResult = useMemo(() => {
-    const list = researchTrades.filter((t) => {
+    const list = researchTrades.filter(t => {
       if (labFilters.pairs.length && !labFilters.pairs.includes(t.pair)) return false;
       if (labFilters.killzones.length && !labFilters.killzones.includes(t.killzone)) return false;
       if (labFilters.directions.length && !labFilters.directions.includes(t.direction)) return false;
@@ -344,329 +627,845 @@ function SMTPro() {
       if (labFilters.pullback && !t.pullback) return false;
       return true;
     });
-    return { list, stats: computeStats(list) };
+    return {
+      list,
+      stats: computeStats(list)
+    };
   }, [researchTrades, labFilters]);
-  const clearLab = () => setLabFilters({ pairs: [], killzones: [], directions: [], grades: [], results: [], sweep: false, displacement: false, mss: false, pullback: false });
-
+  const clearLab = () => setLabFilters({
+    pairs: [],
+    killzones: [],
+    directions: [],
+    grades: [],
+    results: [],
+    sweep: false,
+    displacement: false,
+    mss: false,
+    pullback: false
+  });
   const liveComputed = useMemo(() => {
-    const sorted = [...liveTrades].sort((a, b) => (a.date > b.date ? 1 : -1));
-    let balance = account.size, peak = account.size, maxDDSoFar = 0;
-    const rows = sorted.map((t) => {
+    const sorted = [...liveTrades].sort((a, b) => a.date > b.date ? 1 : -1);
+    let balance = account.size,
+      peak = account.size,
+      maxDDSoFar = 0;
+    const rows = sorted.map(t => {
       const pnl = account.size * (num(t.riskPct, 0) / 100) * num(t.achievedR, 0);
-      balance += pnl; peak = Math.max(peak, balance);
-      const dd = peak > 0 ? ((peak - balance) / peak) * 100 : 0;
+      balance += pnl;
+      peak = Math.max(peak, balance);
+      const dd = peak > 0 ? (peak - balance) / peak * 100 : 0;
       maxDDSoFar = Math.max(maxDDSoFar, dd);
-      return { ...t, pnl, balance, dd };
+      return {
+        ...t,
+        pnl,
+        balance,
+        dd
+      };
     });
     const today = todayStr();
-    const todayPnl = rows.filter((r) => r.date === today).reduce((s, r) => s + r.pnl, 0);
-    const todayLossPct = todayPnl < 0 ? (Math.abs(todayPnl) / account.size) * 100 : 0;
+    const todayPnl = rows.filter(r => r.date === today).reduce((s, r) => s + r.pnl, 0);
+    const todayLossPct = todayPnl < 0 ? Math.abs(todayPnl) / account.size * 100 : 0;
     const totalR = liveTrades.reduce((s, t) => s + num(t.achievedR, 0), 0);
     const currentBalance = rows.length ? rows[rows.length - 1].balance : account.size;
-    const currentDD = peak > 0 ? ((peak - currentBalance) / peak) * 100 : 0;
+    const currentDD = peak > 0 ? (peak - currentBalance) / peak * 100 : 0;
     return {
-      rows: rows.reverse(), totalR, currentBalance, currentDD, maxDDSoFar, todayLossPct,
+      rows: rows.reverse(),
+      totalR,
+      currentBalance,
+      currentDD,
+      maxDDSoFar,
+      todayLossPct,
       remainingDaily: Math.max(0, account.dailyLimitPct - todayLossPct),
-      remainingDD: Math.max(0, account.maxDrawdownPct - currentDD),
+      remainingDD: Math.max(0, account.maxDrawdownPct - currentDD)
     };
   }, [liveTrades, account]);
-
-  return (
-    <div style={{ minHeight: "100%", background: "var(--bg)" }}>
-      <header className="header">
-        <div className="brand">
-          <div className="brand-mark">SMT</div>
-          <div>
-            <div className="brand-title">SMT PRO</div>
-            <div className="brand-sub">Samet Method Trading — Operating System</div>
-          </div>
-        </div>
-        <div className="mode-switch">
-          <Pill active={mode === "research"} onClick={() => setMode("research")} icon="flask">Research</Pill>
-          <Pill active={mode === "live"} onClick={() => setMode("live")} icon="radio">Live Trading</Pill>
-        </div>
-      </header>
-
-      {mode === "research" && (
-        <React.Fragment>
-          <nav className="subnav">
-            <Pill active={researchTab === "log"} onClick={() => setResearchTab("log")} icon="grid">Research</Pill>
-            <Pill active={researchTab === "analytics"} onClick={() => setResearchTab("analytics")} icon="gauge">Analytics</Pill>
-            <Pill active={researchTab === "lab"} onClick={() => setResearchTab("lab")} icon="filter">Research Lab</Pill>
-          </nav>
-
-          {researchTab === "log" && (
-            <section className="panel">
-              <div className="panel-head">
-                <div>
-                  <div className="panel-title">İşlem Günlüğü</div>
-                  <div className="panel-sub">{researchTrades.length} işlem kayıtlı</div>
-                </div>
-                <button className="btn-gold" onClick={() => setFormOpen((v) => !v)}>
-                  <Icon name={formOpen ? "x" : "plus"} size={14} />{formOpen ? "Kapat" : "Yeni İşlem"}
-                </button>
-              </div>
-
-              {formOpen && (
-                <div className="form-card">
-                  <div className="form-grid">
-                    <Field label="Tarih"><input type="date" value={draft.date} onChange={(e) => setDraft({ ...draft, date: e.target.value })} /></Field>
-                    <Field label="Parite">
-                      <select value={draft.pair} onChange={(e) => setDraft({ ...draft, pair: e.target.value })}>
-                        {PAIRS.map((p) => <option key={p}>{p}</option>)}
-                      </select>
-                    </Field>
-                    <Field label="Timeframe"><input value={draft.timeframe} onChange={(e) => setDraft({ ...draft, timeframe: e.target.value })} placeholder="15m, 1H, 4H..." /></Field>
-                    <Field label="Yön">
-                      <div className="dir-toggle">
-                        <button type="button" className={draft.direction === "Long" ? "dir-on-long" : ""} onClick={() => setDraft({ ...draft, direction: "Long" })}><Icon name="trendUp" size={13} /> Long</button>
-                        <button type="button" className={draft.direction === "Short" ? "dir-on-short" : ""} onClick={() => setDraft({ ...draft, direction: "Short" })}><Icon name="trendDown" size={13} /> Short</button>
-                      </div>
-                    </Field>
-                    <Field label="Weekly Bias"><select value={draft.weeklyBias} onChange={(e) => setDraft({ ...draft, weeklyBias: e.target.value })}>{BIAS.map((b) => <option key={b}>{b}</option>)}</select></Field>
-                    <Field label="Daily Bias"><select value={draft.dailyBias} onChange={(e) => setDraft({ ...draft, dailyBias: e.target.value })}>{BIAS.map((b) => <option key={b}>{b}</option>)}</select></Field>
-                    <Field label="Premium / Discount"><select value={draft.pd} onChange={(e) => setDraft({ ...draft, pd: e.target.value })}>{PD.map((b) => <option key={b}>{b}</option>)}</select></Field>
-                    <Field label="Kill Zone"><select value={draft.killzone} onChange={(e) => setDraft({ ...draft, killzone: e.target.value })}>{KILLZONES.map((k) => <option key={k}>{k}</option>)}</select></Field>
-                    <Field label="Draw on Liquidity" span={2}><input value={draft.dol} onChange={(e) => setDraft({ ...draft, dol: e.target.value })} placeholder="örn. Weekly Low" /></Field>
-                    <Field label="Asia High"><input value={draft.asiaHigh} onChange={(e) => setDraft({ ...draft, asiaHigh: e.target.value })} /></Field>
-                    <Field label="Asia Low"><input value={draft.asiaLow} onChange={(e) => setDraft({ ...draft, asiaLow: e.target.value })} /></Field>
-                    <Field label="DR"><input value={draft.dr} onChange={(e) => setDraft({ ...draft, dr: e.target.value })} /></Field>
-                    <Field label="IDR"><input value={draft.idr} onChange={(e) => setDraft({ ...draft, idr: e.target.value })} /></Field>
-                    <Field label="Risk %"><input type="number" step="0.1" value={draft.riskPct} onChange={(e) => setDraft({ ...draft, riskPct: e.target.value })} /></Field>
-                    <Field label="RR (Planlanan)"><input type="number" step="0.1" value={draft.rr} onChange={(e) => setDraft({ ...draft, rr: e.target.value })} /></Field>
-                  </div>
-
-                  <div className="checklist-block">
-                    <div className="checklist-head">
-                      <span>Execution Checklist — Modül 5</span>
-                      <span className={`gate ${confluenceCount(draft) === 9 && num(draft.rr) >= 3 ? "gate-ok" : "gate-no"}`}>
-                        {confluenceCount(draft) === 9 && num(draft.rr) >= 3
-                          ? (<React.Fragment><Icon name="check" size={12} /> GEÇERLİ İŞLEM</React.Fragment>)
-                          : (<React.Fragment><Icon name="alert" size={12} /> {confluenceCount(draft)}/9 · FİLTRE DIŞI</React.Fragment>)}
-                      </span>
-                    </div>
-                    <ConfluenceChain trade={draft} onToggle={(key) => setDraft({ ...draft, [key]: !draft[key] })} />
-                  </div>
-
-                  <div className="form-grid" style={{ marginTop: 14 }}>
-                    <Field label="Setup Grade"><select value={draft.setupGrade} onChange={(e) => setDraft({ ...draft, setupGrade: e.target.value })}>{GRADES.map((g) => <option key={g}>{g}</option>)}</select></Field>
-                    <Field label="Sonuç"><select value={draft.result} onChange={(e) => setDraft({ ...draft, result: e.target.value })}>{RESULTS.map((r) => <option key={r}>{r}</option>)}</select></Field>
-                    <Field label="Elde Edilen R"><input type="number" step="0.1" value={draft.achievedR} onChange={(e) => setDraft({ ...draft, achievedR: e.target.value })} /></Field>
-                    <Field label="Screenshot (Before) — URL"><input value={draft.screenshotBefore} onChange={(e) => setDraft({ ...draft, screenshotBefore: e.target.value })} placeholder="https://..." /></Field>
-                    <Field label="Screenshot (After) — URL"><input value={draft.screenshotAfter} onChange={(e) => setDraft({ ...draft, screenshotAfter: e.target.value })} placeholder="https://..." /></Field>
-                    <Field label="Not" span={3}><textarea rows={2} value={draft.note} onChange={(e) => setDraft({ ...draft, note: e.target.value })} /></Field>
-                  </div>
-                  <div className="form-actions"><button className="btn-gold" onClick={saveDraft}><Icon name="save" size={14} /> Save</button></div>
-                </div>
-              )}
-
-              <div className="trade-list">
-                {researchTrades.length === 0 && <div className="empty">Henüz işlem yok. "Yeni İşlem" ile ilk backtest kaydını ekle.</div>}
-                {researchTrades.map((t) => (
-                  <div key={t.id} className="trade-row">
-                    <div className="trade-row-main" onClick={() => setExpandedId(expandedId === t.id ? null : t.id)}>
-                      <span className="tr-date">{t.date}</span>
-                      <span className="tr-pair">{t.pair}</span>
-                      <span className={`tr-dir ${t.direction === "Long" ? "dir-long" : "dir-short"}`}><Icon name={t.direction === "Long" ? "trendUp" : "trendDown"} size={12} /> {t.direction}</span>
-                      <span className="tr-kz">{t.killzone}</span>
-                      <span className="tr-grade">{t.setupGrade}</span>
-                      <span className={`tr-result res-${t.result.toLowerCase()}`}>{t.result}</span>
-                      <span className="tr-r">{num(t.achievedR) >= 0 ? "+" : ""}{fmt1(num(t.achievedR))}R</span>
-                      <ConfluenceChain trade={t} onToggle={() => {}} compact />
-                      <span className="tr-expand"><Icon name={expandedId === t.id ? "chevronUp" : "chevronDown"} size={14} /></span>
-                    </div>
-                    {expandedId === t.id && (
-                      <div className="trade-row-detail">
-                        <div className="detail-grid">
-                          <div><b>Weekly Bias</b>{t.weeklyBias}</div>
-                          <div><b>Daily Bias</b>{t.dailyBias}</div>
-                          <div><b>Premium/Discount</b>{t.pd}</div>
-                          <div><b>DOL</b>{t.dol || "—"}</div>
-                          <div><b>Asia High/Low</b>{t.asiaHigh || "—"} / {t.asiaLow || "—"}</div>
-                          <div><b>DR / IDR</b>{t.dr || "—"} / {t.idr || "—"}</div>
-                          <div><b>Risk</b>%{t.riskPct}</div>
-                          <div><b>RR Planlanan</b>{t.rr}</div>
-                          <div><b>Timeframe</b>{t.timeframe}</div>
-                        </div>
-                        {t.note && <div className="detail-note">{t.note}</div>}
-                        {(t.screenshotBefore || t.screenshotAfter) && (
-                          <div className="detail-shots">
-                            {t.screenshotBefore && <a href={t.screenshotBefore} target="_blank" rel="noreferrer" className="shot-link"><Icon name="image" size={12} /> Before</a>}
-                            {t.screenshotAfter && <a href={t.screenshotAfter} target="_blank" rel="noreferrer" className="shot-link"><Icon name="image" size={12} /> After</a>}
-                          </div>
-                        )}
-                        <button className="btn-ghost-danger" onClick={() => deleteTrade(t.id)}><Icon name="trash" size={12} /> Sil</button>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {researchTab === "analytics" && (
-            <section className="panel">
-              <div className="panel-head">
-                <div><div className="panel-title">Analytics</div><div className="panel-sub">Tüm research verisi üzerinden otomatik hesap</div></div>
-              </div>
-              <div className="stat-row">
-                <StatCard label="Toplam İşlem" value={overall.total} />
-                <StatCard label="Win Rate" value={`${fmt1(overall.winRate)}%`} tone={overall.winRate >= 50 ? "good" : "bad"} />
-                <StatCard label="Profit Factor" value={overall.pf === Infinity ? "∞" : fmt2(overall.pf)} tone={overall.pf >= 2 ? "good" : "bad"} />
-                <StatCard label="Average R" value={`${overall.avgR >= 0 ? "+" : ""}${fmt2(overall.avgR)}`} tone={overall.avgR >= 0 ? "good" : "bad"} />
-              </div>
-              <div className="pair-breakdown">
-                {byPair.length === 0 && <div className="empty">Kırılım için veri yok.</div>}
-                {byPair.map((p) => (
-                  <div key={p.pair} className="pair-row">
-                    <div className="pair-row-head">
-                      <span className="pair-name">{p.pair}</span>
-                      <span className="pair-meta">{p.total} işlem · PF {p.pf === Infinity ? "∞" : fmt2(p.pf)} · Avg RR {fmt2(p.avgR)}</span>
-                    </div>
-                    <div className="bar-track"><div className="bar-fill" style={{ width: `${Math.min(100, p.winRate)}%` }} /><span className="bar-label">{fmt1(p.winRate)}% Win Rate</span></div>
-                  </div>
-                ))}
-              </div>
-              <div className="ai-teaser">
-                <div className="ai-teaser-title">Sonra AI Ekleriz</div>
-                <div className="ai-teaser-body">"Son 30 kaybeden işleminin %61'inde Displacement zayıfmış." gibi kişiye özel analizler bu alanda görünecek — yeterli veri biriktikçe aktifleşecek.</div>
-              </div>
-            </section>
-          )}
-
-          {researchTab === "lab" && (
-            <section className="panel lab-panel">
-              <div className="panel-head">
-                <div><div className="panel-title">Research Lab</div><div className="panel-sub">Filtreleri seç, tek tuşla sorgula</div></div>
-                <button className="btn-ghost" onClick={clearLab}><Icon name="x" size={13} /> Temizle</button>
-              </div>
-              <div className="lab-grid">
-                <div className="lab-filters">
-                  <div className="lab-group"><div className="lab-group-title">Parite</div><div className="chip-row">{PAIRS.map((p) => <button key={p} className={`chip ${labFilters.pairs.includes(p) ? "chip-on" : ""}`} onClick={() => toggleArr("pairs", p)}>{p}</button>)}</div></div>
-                  <div className="lab-group"><div className="lab-group-title">Seans</div><div className="chip-row">{KILLZONES.map((k) => <button key={k} className={`chip ${labFilters.killzones.includes(k) ? "chip-on" : ""}`} onClick={() => toggleArr("killzones", k)}>{k}</button>)}</div></div>
-                  <div className="lab-group"><div className="lab-group-title">Yön</div><div className="chip-row">{["Long", "Short"].map((d) => <button key={d} className={`chip ${labFilters.directions.includes(d) ? "chip-on" : ""}`} onClick={() => toggleArr("directions", d)}>{d}</button>)}</div></div>
-                  <div className="lab-group"><div className="lab-group-title">Setup Grade</div><div className="chip-row">{GRADES.map((g) => <button key={g} className={`chip ${labFilters.grades.includes(g) ? "chip-on" : ""}`} onClick={() => toggleArr("grades", g)}>{g}</button>)}</div></div>
-                  <div className="lab-group"><div className="lab-group-title">Sonuç</div><div className="chip-row">{RESULTS.map((r) => <button key={r} className={`chip ${labFilters.results.includes(r) ? "chip-on" : ""}`} onClick={() => toggleArr("results", r)}>{r}</button>)}</div></div>
-                  <div className="lab-group">
-                    <div className="lab-group-title">Confluence</div>
-                    <div className="chip-row">
-                      <button className={`chip ${labFilters.sweep ? "chip-on" : ""}`} onClick={() => toggleBool("sweep")}>Liquidity Sweep</button>
-                      <button className={`chip ${labFilters.displacement ? "chip-on" : ""}`} onClick={() => toggleBool("displacement")}>Displacement</button>
-                      <button className={`chip ${labFilters.mss ? "chip-on" : ""}`} onClick={() => toggleBool("mss")}>MSS</button>
-                      <button className={`chip ${labFilters.pullback ? "chip-on" : ""}`} onClick={() => toggleBool("pullback")}>Pullback</button>
-                    </div>
-                  </div>
-                </div>
-                <div className="lab-results">
-                  <div className="stat-row">
-                    <StatCard label="Toplam İşlem" value={labResult.stats.total} />
-                    <StatCard label="Win Rate" value={`${fmt1(labResult.stats.winRate)}%`} tone={labResult.stats.winRate >= 50 ? "good" : "bad"} />
-                    <StatCard label="Average RR" value={fmt2(labResult.stats.avgR)} />
-                  </div>
-                  <div className="lab-list">
-                    {labResult.list.length === 0 && <div className="empty">Bu filtrelerle eşleşen işlem yok.</div>}
-                    {labResult.list.map((t) => (
-                      <div key={t.id} className="lab-item">
-                        <span>{t.date}</span><span className="pair-name">{t.pair}</span><span>{t.killzone}</span>
-                        <span className={`tr-result res-${t.result.toLowerCase()}`}>{t.result}</span>
-                        <span>{num(t.achievedR) >= 0 ? "+" : ""}{fmt1(num(t.achievedR))}R</span>
-                        <span className="tr-grade">{t.setupGrade}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </section>
-          )}
-        </React.Fragment>
-      )}
-
-      {mode === "live" && (
-        <section className="panel">
-          <div className="panel-head">
-            <div><div className="panel-title">{account.name}</div><div className="panel-sub">Live Trading — Prop Firm Risk Engine</div></div>
-            <button className="btn-ghost" onClick={() => setAccountEditOpen((v) => !v)}><Icon name="settings" size={13} /> Hesap Ayarları</button>
-          </div>
-
-          {accountEditOpen && (
-            <div className="form-card">
-              <div className="form-grid">
-                <Field label="Hesap Adı"><input value={account.name} onChange={(e) => persistAccount({ ...account, name: e.target.value })} /></Field>
-                <Field label="Hesap Büyüklüğü ($)"><input type="number" value={account.size} onChange={(e) => persistAccount({ ...account, size: num(e.target.value, 0) })} /></Field>
-                <Field label="Günlük Zarar Limiti (%)"><input type="number" step="0.1" value={account.dailyLimitPct} onChange={(e) => persistAccount({ ...account, dailyLimitPct: num(e.target.value, 0) })} /></Field>
-                <Field label="Maks. Drawdown (%)"><input type="number" step="0.1" value={account.maxDrawdownPct} onChange={(e) => persistAccount({ ...account, maxDrawdownPct: num(e.target.value, 0) })} /></Field>
-              </div>
-            </div>
-          )}
-
-          <div className="stat-row">
-            <StatCard label="Güncel Bakiye" value={`$${liveComputed.currentBalance.toLocaleString(undefined, { maximumFractionDigits: 0 })}`} />
-            <StatCard label="Toplam R" value={`${liveComputed.totalR >= 0 ? "+" : ""}${fmt2(liveComputed.totalR)}`} tone={liveComputed.totalR >= 0 ? "good" : "bad"} />
-            <StatCard label="Kalan Günlük Risk" value={`${fmt1(liveComputed.remainingDaily)}%`} sub={`limit %${account.dailyLimitPct}`} tone={liveComputed.remainingDaily > 1 ? "good" : "bad"} />
-            <StatCard label="Kalan Drawdown Payı" value={`${fmt1(liveComputed.remainingDD)}%`} sub={`limit %${account.maxDrawdownPct}`} tone={liveComputed.remainingDD > 2 ? "good" : "bad"} />
-          </div>
-
-          <div className="dd-bars">
-            <div className="dd-bar-block">
-              <div className="dd-bar-label"><span>Günlük Kullanım</span><span>{fmt1(liveComputed.todayLossPct)}% / {account.dailyLimitPct}%</span></div>
-              <div className="bar-track bar-track-slim"><div className={`bar-fill ${liveComputed.todayLossPct / account.dailyLimitPct > 0.8 ? "bar-danger" : ""}`} style={{ width: `${Math.min(100, (liveComputed.todayLossPct / (account.dailyLimitPct || 1)) * 100)}%` }} /></div>
-            </div>
-            <div className="dd-bar-block">
-              <div className="dd-bar-label"><span>Toplam Drawdown</span><span>{fmt1(liveComputed.currentDD)}% / {account.maxDrawdownPct}%</span></div>
-              <div className="bar-track bar-track-slim"><div className={`bar-fill ${liveComputed.currentDD / account.maxDrawdownPct > 0.8 ? "bar-danger" : ""}`} style={{ width: `${Math.min(100, (liveComputed.currentDD / (account.maxDrawdownPct || 1)) * 100)}%` }} /></div>
-            </div>
-          </div>
-
-          <div className="panel-head" style={{ marginTop: 24 }}>
-            <div className="panel-title" style={{ fontSize: 15 }}>İşlemler</div>
-            <button className="btn-gold" onClick={() => setLiveFormOpen((v) => !v)}><Icon name={liveFormOpen ? "x" : "plus"} size={14} />{liveFormOpen ? "Kapat" : "Yeni İşlem"}</button>
-          </div>
-
-          {liveFormOpen && (
-            <div className="form-card">
-              <div className="form-grid">
-                <Field label="Tarih"><input type="date" value={liveDraft.date} onChange={(e) => setLiveDraft({ ...liveDraft, date: e.target.value })} /></Field>
-                <Field label="Parite"><select value={liveDraft.pair} onChange={(e) => setLiveDraft({ ...liveDraft, pair: e.target.value })}>{PAIRS.map((p) => <option key={p}>{p}</option>)}</select></Field>
-                <Field label="Yön">
-                  <div className="dir-toggle">
-                    <button type="button" className={liveDraft.direction === "Long" ? "dir-on-long" : ""} onClick={() => setLiveDraft({ ...liveDraft, direction: "Long" })}><Icon name="trendUp" size={13} /> Long</button>
-                    <button type="button" className={liveDraft.direction === "Short" ? "dir-on-short" : ""} onClick={() => setLiveDraft({ ...liveDraft, direction: "Short" })}><Icon name="trendDown" size={13} /> Short</button>
-                  </div>
-                </Field>
-                <Field label="Kill Zone"><select value={liveDraft.killzone} onChange={(e) => setLiveDraft({ ...liveDraft, killzone: e.target.value })}>{KILLZONES.map((k) => <option key={k}>{k}</option>)}</select></Field>
-                <Field label="Risk %"><input type="number" step="0.1" value={liveDraft.riskPct} onChange={(e) => setLiveDraft({ ...liveDraft, riskPct: e.target.value })} /></Field>
-                <Field label="Sonuç"><select value={liveDraft.result} onChange={(e) => setLiveDraft({ ...liveDraft, result: e.target.value })}>{RESULTS.map((r) => <option key={r}>{r}</option>)}</select></Field>
-                <Field label="Elde Edilen R"><input type="number" step="0.1" value={liveDraft.achievedR} onChange={(e) => setLiveDraft({ ...liveDraft, achievedR: e.target.value })} /></Field>
-                <Field label="Not" span={3}><textarea rows={2} value={liveDraft.note} onChange={(e) => setLiveDraft({ ...liveDraft, note: e.target.value })} /></Field>
-              </div>
-              <div className="form-actions"><button className="btn-gold" onClick={saveLiveDraft}><Icon name="save" size={14} /> Save</button></div>
-            </div>
-          )}
-
-          <div className="trade-list">
-            {liveComputed.rows.length === 0 && <div className="empty">Henüz canlı işlem yok.</div>}
-            {liveComputed.rows.map((t) => (
-              <div key={t.id} className="trade-row">
-                <div className="trade-row-main">
-                  <span className="tr-date">{t.date}</span>
-                  <span className="tr-pair">{t.pair}</span>
-                  <span className={`tr-dir ${t.direction === "Long" ? "dir-long" : "dir-short"}`}><Icon name={t.direction === "Long" ? "trendUp" : "trendDown"} size={12} /> {t.direction}</span>
-                  <span className="tr-kz">{t.killzone}</span>
-                  <span className={`tr-result res-${t.result.toLowerCase()}`}>{t.result}</span>
-                  <span className="tr-r">{t.achievedR >= 0 ? "+" : ""}{fmt1(t.achievedR)}R</span>
-                  <span className="tr-pnl">{t.pnl >= 0 ? "+" : ""}${t.pnl.toFixed(0)}</span>
-                  <button className="btn-ghost-danger btn-icon-only" onClick={() => deleteTrade(t.id)}><Icon name="trash" size={12} /></button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-    </div>
-  );
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      minHeight: "100%",
+      background: "var(--bg)"
+    }
+  }, /*#__PURE__*/React.createElement("header", {
+    className: "header"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "brand"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "brand-mark"
+  }, "SMT"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "brand-title"
+  }, "SMT PRO"), /*#__PURE__*/React.createElement("div", {
+    className: "brand-sub"
+  }, "Samet Method Trading — Operating System"))), /*#__PURE__*/React.createElement("div", {
+    className: "mode-switch"
+  }, /*#__PURE__*/React.createElement(Pill, {
+    active: mode === "research",
+    onClick: () => setMode("research"),
+    icon: "flask"
+  }, "Research"), /*#__PURE__*/React.createElement(Pill, {
+    active: mode === "live",
+    onClick: () => setMode("live"),
+    icon: "radio"
+  }, "Live Trading"))), mode === "research" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("nav", {
+    className: "subnav"
+  }, /*#__PURE__*/React.createElement(Pill, {
+    active: researchTab === "log",
+    onClick: () => setResearchTab("log"),
+    icon: "grid"
+  }, "Research"), /*#__PURE__*/React.createElement(Pill, {
+    active: researchTab === "analytics",
+    onClick: () => setResearchTab("analytics"),
+    icon: "gauge"
+  }, "Analytics"), /*#__PURE__*/React.createElement(Pill, {
+    active: researchTab === "lab",
+    onClick: () => setResearchTab("lab"),
+    icon: "filter"
+  }, "Research Lab")), researchTab === "log" && /*#__PURE__*/React.createElement("section", {
+    className: "panel"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "panel-head"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "panel-title"
+  }, "İşlem Günlüğü"), /*#__PURE__*/React.createElement("div", {
+    className: "panel-sub"
+  }, researchTrades.length, " işlem kayıtlı")), /*#__PURE__*/React.createElement("button", {
+    className: "btn-gold",
+    onClick: () => setFormOpen(v => !v)
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: formOpen ? "x" : "plus",
+    size: 14
+  }), formOpen ? "Kapat" : "Yeni İşlem")), formOpen && /*#__PURE__*/React.createElement("div", {
+    className: "form-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "form-grid"
+  }, /*#__PURE__*/React.createElement(Field, {
+    label: "Tarih"
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "date",
+    value: draft.date,
+    onChange: e => setDraft({
+      ...draft,
+      date: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "Parite"
+  }, /*#__PURE__*/React.createElement("select", {
+    value: draft.pair,
+    onChange: e => setDraft({
+      ...draft,
+      pair: e.target.value
+    })
+  }, PAIRS.map(p => /*#__PURE__*/React.createElement("option", {
+    key: p
+  }, p)))), /*#__PURE__*/React.createElement(Field, {
+    label: "Timeframe"
+  }, /*#__PURE__*/React.createElement("input", {
+    value: draft.timeframe,
+    onChange: e => setDraft({
+      ...draft,
+      timeframe: e.target.value
+    }),
+    placeholder: "15m, 1H, 4H..."
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "Yön"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dir-toggle"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: draft.direction === "Long" ? "dir-on-long" : "",
+    onClick: () => setDraft({
+      ...draft,
+      direction: "Long"
+    })
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "trendUp",
+    size: 13
+  }), " Long"), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: draft.direction === "Short" ? "dir-on-short" : "",
+    onClick: () => setDraft({
+      ...draft,
+      direction: "Short"
+    })
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "trendDown",
+    size: 13
+  }), " Short"))), /*#__PURE__*/React.createElement(Field, {
+    label: "Weekly Bias"
+  }, /*#__PURE__*/React.createElement("select", {
+    value: draft.weeklyBias,
+    onChange: e => setDraft({
+      ...draft,
+      weeklyBias: e.target.value
+    })
+  }, BIAS.map(b => /*#__PURE__*/React.createElement("option", {
+    key: b
+  }, b)))), /*#__PURE__*/React.createElement(Field, {
+    label: "Daily Bias"
+  }, /*#__PURE__*/React.createElement("select", {
+    value: draft.dailyBias,
+    onChange: e => setDraft({
+      ...draft,
+      dailyBias: e.target.value
+    })
+  }, BIAS.map(b => /*#__PURE__*/React.createElement("option", {
+    key: b
+  }, b)))), /*#__PURE__*/React.createElement(Field, {
+    label: "Premium / Discount"
+  }, /*#__PURE__*/React.createElement("select", {
+    value: draft.pd,
+    onChange: e => setDraft({
+      ...draft,
+      pd: e.target.value
+    })
+  }, PD.map(b => /*#__PURE__*/React.createElement("option", {
+    key: b
+  }, b)))), /*#__PURE__*/React.createElement(Field, {
+    label: "Kill Zone"
+  }, /*#__PURE__*/React.createElement("select", {
+    value: draft.killzone,
+    onChange: e => setDraft({
+      ...draft,
+      killzone: e.target.value
+    })
+  }, KILLZONES.map(k => /*#__PURE__*/React.createElement("option", {
+    key: k
+  }, k)))), /*#__PURE__*/React.createElement(Field, {
+    label: "Draw on Liquidity",
+    span: 2
+  }, /*#__PURE__*/React.createElement("input", {
+    value: draft.dol,
+    onChange: e => setDraft({
+      ...draft,
+      dol: e.target.value
+    }),
+    placeholder: "örn. Weekly Low"
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "Asia High"
+  }, /*#__PURE__*/React.createElement("input", {
+    value: draft.asiaHigh,
+    onChange: e => setDraft({
+      ...draft,
+      asiaHigh: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "Asia Low"
+  }, /*#__PURE__*/React.createElement("input", {
+    value: draft.asiaLow,
+    onChange: e => setDraft({
+      ...draft,
+      asiaLow: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "DR"
+  }, /*#__PURE__*/React.createElement("input", {
+    value: draft.dr,
+    onChange: e => setDraft({
+      ...draft,
+      dr: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "IDR"
+  }, /*#__PURE__*/React.createElement("input", {
+    value: draft.idr,
+    onChange: e => setDraft({
+      ...draft,
+      idr: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "Risk %"
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    step: "0.1",
+    value: draft.riskPct,
+    onChange: e => setDraft({
+      ...draft,
+      riskPct: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "RR (Planlanan)"
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    step: "0.1",
+    value: draft.rr,
+    onChange: e => setDraft({
+      ...draft,
+      rr: e.target.value
+    })
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "checklist-block"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "checklist-head"
+  }, /*#__PURE__*/React.createElement("span", null, "Execution Checklist — Modül 5"), /*#__PURE__*/React.createElement("span", {
+    className: `gate ${confluenceCount(draft) === 9 && num(draft.rr) >= 3 ? "gate-ok" : "gate-no"}`
+  }, confluenceCount(draft) === 9 && num(draft.rr) >= 3 ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Icon, {
+    name: "check",
+    size: 12
+  }), " GEÇERLİ İŞLEM") : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Icon, {
+    name: "alert",
+    size: 12
+  }), " ", confluenceCount(draft), "/9 · FİLTRE DIŞI"))), /*#__PURE__*/React.createElement(ConfluenceChain, {
+    trade: draft,
+    onToggle: key => setDraft({
+      ...draft,
+      [key]: !draft[key]
+    })
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "form-grid",
+    style: {
+      marginTop: 14
+    }
+  }, /*#__PURE__*/React.createElement(Field, {
+    label: "Setup Grade"
+  }, /*#__PURE__*/React.createElement("select", {
+    value: draft.setupGrade,
+    onChange: e => setDraft({
+      ...draft,
+      setupGrade: e.target.value
+    })
+  }, GRADES.map(g => /*#__PURE__*/React.createElement("option", {
+    key: g
+  }, g)))), /*#__PURE__*/React.createElement(Field, {
+    label: "Sonuç"
+  }, /*#__PURE__*/React.createElement("select", {
+    value: draft.result,
+    onChange: e => setDraft({
+      ...draft,
+      result: e.target.value
+    })
+  }, RESULTS.map(r => /*#__PURE__*/React.createElement("option", {
+    key: r
+  }, r)))), /*#__PURE__*/React.createElement(Field, {
+    label: "Elde Edilen R"
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    step: "0.1",
+    value: draft.achievedR,
+    onChange: e => setDraft({
+      ...draft,
+      achievedR: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "Screenshot (Before) — URL"
+  }, /*#__PURE__*/React.createElement("input", {
+    value: draft.screenshotBefore,
+    onChange: e => setDraft({
+      ...draft,
+      screenshotBefore: e.target.value
+    }),
+    placeholder: "https://..."
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "Screenshot (After) — URL"
+  }, /*#__PURE__*/React.createElement("input", {
+    value: draft.screenshotAfter,
+    onChange: e => setDraft({
+      ...draft,
+      screenshotAfter: e.target.value
+    }),
+    placeholder: "https://..."
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "Not",
+    span: 3
+  }, /*#__PURE__*/React.createElement("textarea", {
+    rows: 2,
+    value: draft.note,
+    onChange: e => setDraft({
+      ...draft,
+      note: e.target.value
+    })
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "form-actions"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn-gold",
+    onClick: saveDraft
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "save",
+    size: 14
+  }), " Save"))), /*#__PURE__*/React.createElement("div", {
+    className: "trade-list"
+  }, researchTrades.length === 0 && /*#__PURE__*/React.createElement("div", {
+    className: "empty"
+  }, "Henüz işlem yok. \"Yeni İşlem\" ile ilk backtest kaydını ekle."), researchTrades.map(t => /*#__PURE__*/React.createElement("div", {
+    key: t.id,
+    className: "trade-row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "trade-row-main",
+    onClick: () => setExpandedId(expandedId === t.id ? null : t.id)
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "tr-date"
+  }, t.date), /*#__PURE__*/React.createElement("span", {
+    className: "tr-pair"
+  }, t.pair), /*#__PURE__*/React.createElement("span", {
+    className: `tr-dir ${t.direction === "Long" ? "dir-long" : "dir-short"}`
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: t.direction === "Long" ? "trendUp" : "trendDown",
+    size: 12
+  }), " ", t.direction), /*#__PURE__*/React.createElement("span", {
+    className: "tr-kz"
+  }, t.killzone), /*#__PURE__*/React.createElement("span", {
+    className: "tr-grade"
+  }, t.setupGrade), /*#__PURE__*/React.createElement("span", {
+    className: `tr-result res-${t.result.toLowerCase()}`
+  }, t.result), /*#__PURE__*/React.createElement("span", {
+    className: "tr-r"
+  }, num(t.achievedR) >= 0 ? "+" : "", fmt1(num(t.achievedR)), "R"), /*#__PURE__*/React.createElement(ConfluenceChain, {
+    trade: t,
+    onToggle: () => {},
+    compact: true
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "tr-expand"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: expandedId === t.id ? "chevronUp" : "chevronDown",
+    size: 14
+  }))), expandedId === t.id && /*#__PURE__*/React.createElement("div", {
+    className: "trade-row-detail"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "detail-grid"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Weekly Bias"), t.weeklyBias), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Daily Bias"), t.dailyBias), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Premium/Discount"), t.pd), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "DOL"), t.dol || "—"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Asia High/Low"), t.asiaHigh || "—", " / ", t.asiaLow || "—"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "DR / IDR"), t.dr || "—", " / ", t.idr || "—"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Risk"), "%", t.riskPct), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "RR Planlanan"), t.rr), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Timeframe"), t.timeframe)), t.note && /*#__PURE__*/React.createElement("div", {
+    className: "detail-note"
+  }, t.note), (t.screenshotBefore || t.screenshotAfter) && /*#__PURE__*/React.createElement("div", {
+    className: "detail-shots"
+  }, t.screenshotBefore && /*#__PURE__*/React.createElement("a", {
+    href: t.screenshotBefore,
+    target: "_blank",
+    rel: "noreferrer",
+    className: "shot-link"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "image",
+    size: 12
+  }), " Before"), t.screenshotAfter && /*#__PURE__*/React.createElement("a", {
+    href: t.screenshotAfter,
+    target: "_blank",
+    rel: "noreferrer",
+    className: "shot-link"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "image",
+    size: 12
+  }), " After")), /*#__PURE__*/React.createElement("button", {
+    className: "btn-ghost-danger",
+    onClick: () => deleteTrade(t.id)
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "trash",
+    size: 12
+  }), " Sil")))))), researchTab === "analytics" && /*#__PURE__*/React.createElement("section", {
+    className: "panel"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "panel-head"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "panel-title"
+  }, "Analytics"), /*#__PURE__*/React.createElement("div", {
+    className: "panel-sub"
+  }, "Tüm research verisi üzerinden otomatik hesap"))), /*#__PURE__*/React.createElement("div", {
+    className: "stat-row"
+  }, /*#__PURE__*/React.createElement(StatCard, {
+    label: "Toplam İşlem",
+    value: overall.total
+  }), /*#__PURE__*/React.createElement(StatCard, {
+    label: "Win Rate",
+    value: `${fmt1(overall.winRate)}%`,
+    tone: overall.winRate >= 50 ? "good" : "bad"
+  }), /*#__PURE__*/React.createElement(StatCard, {
+    label: "Profit Factor",
+    value: overall.pf === Infinity ? "∞" : fmt2(overall.pf),
+    tone: overall.pf >= 2 ? "good" : "bad"
+  }), /*#__PURE__*/React.createElement(StatCard, {
+    label: "Average R",
+    value: `${overall.avgR >= 0 ? "+" : ""}${fmt2(overall.avgR)}`,
+    tone: overall.avgR >= 0 ? "good" : "bad"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "pair-breakdown"
+  }, byPair.length === 0 && /*#__PURE__*/React.createElement("div", {
+    className: "empty"
+  }, "Kırılım için veri yok."), byPair.map(p => /*#__PURE__*/React.createElement("div", {
+    key: p.pair,
+    className: "pair-row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pair-row-head"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pair-name"
+  }, p.pair), /*#__PURE__*/React.createElement("span", {
+    className: "pair-meta"
+  }, p.total, " işlem · PF ", p.pf === Infinity ? "∞" : fmt2(p.pf), " · Avg RR ", fmt2(p.avgR))), /*#__PURE__*/React.createElement("div", {
+    className: "bar-track"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "bar-fill",
+    style: {
+      width: `${Math.min(100, p.winRate)}%`
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "bar-label"
+  }, fmt1(p.winRate), "% Win Rate"))))), /*#__PURE__*/React.createElement("div", {
+    className: "ai-teaser"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "ai-teaser-title"
+  }, "Sonra AI Ekleriz"), /*#__PURE__*/React.createElement("div", {
+    className: "ai-teaser-body"
+  }, "\"Son 30 kaybeden işleminin %61'inde Displacement zayıfmış.\" gibi kişiye özel analizler bu alanda görünecek — yeterli veri biriktikçe aktifleşecek."))), researchTab === "lab" && /*#__PURE__*/React.createElement("section", {
+    className: "panel lab-panel"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "panel-head"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "panel-title"
+  }, "Research Lab"), /*#__PURE__*/React.createElement("div", {
+    className: "panel-sub"
+  }, "Filtreleri seç, tek tuşla sorgula")), /*#__PURE__*/React.createElement("button", {
+    className: "btn-ghost",
+    onClick: clearLab
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "x",
+    size: 13
+  }), " Temizle")), /*#__PURE__*/React.createElement("div", {
+    className: "lab-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "lab-filters"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "lab-group"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "lab-group-title"
+  }, "Parite"), /*#__PURE__*/React.createElement("div", {
+    className: "chip-row"
+  }, PAIRS.map(p => /*#__PURE__*/React.createElement("button", {
+    key: p,
+    className: `chip ${labFilters.pairs.includes(p) ? "chip-on" : ""}`,
+    onClick: () => toggleArr("pairs", p)
+  }, p)))), /*#__PURE__*/React.createElement("div", {
+    className: "lab-group"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "lab-group-title"
+  }, "Seans"), /*#__PURE__*/React.createElement("div", {
+    className: "chip-row"
+  }, KILLZONES.map(k => /*#__PURE__*/React.createElement("button", {
+    key: k,
+    className: `chip ${labFilters.killzones.includes(k) ? "chip-on" : ""}`,
+    onClick: () => toggleArr("killzones", k)
+  }, k)))), /*#__PURE__*/React.createElement("div", {
+    className: "lab-group"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "lab-group-title"
+  }, "Yön"), /*#__PURE__*/React.createElement("div", {
+    className: "chip-row"
+  }, ["Long", "Short"].map(d => /*#__PURE__*/React.createElement("button", {
+    key: d,
+    className: `chip ${labFilters.directions.includes(d) ? "chip-on" : ""}`,
+    onClick: () => toggleArr("directions", d)
+  }, d)))), /*#__PURE__*/React.createElement("div", {
+    className: "lab-group"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "lab-group-title"
+  }, "Setup Grade"), /*#__PURE__*/React.createElement("div", {
+    className: "chip-row"
+  }, GRADES.map(g => /*#__PURE__*/React.createElement("button", {
+    key: g,
+    className: `chip ${labFilters.grades.includes(g) ? "chip-on" : ""}`,
+    onClick: () => toggleArr("grades", g)
+  }, g)))), /*#__PURE__*/React.createElement("div", {
+    className: "lab-group"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "lab-group-title"
+  }, "Sonuç"), /*#__PURE__*/React.createElement("div", {
+    className: "chip-row"
+  }, RESULTS.map(r => /*#__PURE__*/React.createElement("button", {
+    key: r,
+    className: `chip ${labFilters.results.includes(r) ? "chip-on" : ""}`,
+    onClick: () => toggleArr("results", r)
+  }, r)))), /*#__PURE__*/React.createElement("div", {
+    className: "lab-group"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "lab-group-title"
+  }, "Confluence"), /*#__PURE__*/React.createElement("div", {
+    className: "chip-row"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: `chip ${labFilters.sweep ? "chip-on" : ""}`,
+    onClick: () => toggleBool("sweep")
+  }, "Liquidity Sweep"), /*#__PURE__*/React.createElement("button", {
+    className: `chip ${labFilters.displacement ? "chip-on" : ""}`,
+    onClick: () => toggleBool("displacement")
+  }, "Displacement"), /*#__PURE__*/React.createElement("button", {
+    className: `chip ${labFilters.mss ? "chip-on" : ""}`,
+    onClick: () => toggleBool("mss")
+  }, "MSS"), /*#__PURE__*/React.createElement("button", {
+    className: `chip ${labFilters.pullback ? "chip-on" : ""}`,
+    onClick: () => toggleBool("pullback")
+  }, "Pullback")))), /*#__PURE__*/React.createElement("div", {
+    className: "lab-results"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "stat-row"
+  }, /*#__PURE__*/React.createElement(StatCard, {
+    label: "Toplam İşlem",
+    value: labResult.stats.total
+  }), /*#__PURE__*/React.createElement(StatCard, {
+    label: "Win Rate",
+    value: `${fmt1(labResult.stats.winRate)}%`,
+    tone: labResult.stats.winRate >= 50 ? "good" : "bad"
+  }), /*#__PURE__*/React.createElement(StatCard, {
+    label: "Average RR",
+    value: fmt2(labResult.stats.avgR)
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "lab-list"
+  }, labResult.list.length === 0 && /*#__PURE__*/React.createElement("div", {
+    className: "empty"
+  }, "Bu filtrelerle eşleşen işlem yok."), labResult.list.map(t => /*#__PURE__*/React.createElement("div", {
+    key: t.id,
+    className: "lab-item"
+  }, /*#__PURE__*/React.createElement("span", null, t.date), /*#__PURE__*/React.createElement("span", {
+    className: "pair-name"
+  }, t.pair), /*#__PURE__*/React.createElement("span", null, t.killzone), /*#__PURE__*/React.createElement("span", {
+    className: `tr-result res-${t.result.toLowerCase()}`
+  }, t.result), /*#__PURE__*/React.createElement("span", null, num(t.achievedR) >= 0 ? "+" : "", fmt1(num(t.achievedR)), "R"), /*#__PURE__*/React.createElement("span", {
+    className: "tr-grade"
+  }, t.setupGrade)))))))), mode === "live" && /*#__PURE__*/React.createElement("section", {
+    className: "panel"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "panel-head"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "panel-title"
+  }, account.name), /*#__PURE__*/React.createElement("div", {
+    className: "panel-sub"
+  }, "Live Trading — Prop Firm Risk Engine")), /*#__PURE__*/React.createElement("button", {
+    className: "btn-ghost",
+    onClick: () => setAccountEditOpen(v => !v)
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "settings",
+    size: 13
+  }), " Hesap Ayarları")), accountEditOpen && /*#__PURE__*/React.createElement("div", {
+    className: "form-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "form-grid"
+  }, /*#__PURE__*/React.createElement(Field, {
+    label: "Hesap Adı"
+  }, /*#__PURE__*/React.createElement("input", {
+    value: account.name,
+    onChange: e => persistAccount({
+      ...account,
+      name: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "Hesap Büyüklüğü ($)"
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    value: account.size,
+    onChange: e => persistAccount({
+      ...account,
+      size: num(e.target.value, 0)
+    })
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "Günlük Zarar Limiti (%)"
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    step: "0.1",
+    value: account.dailyLimitPct,
+    onChange: e => persistAccount({
+      ...account,
+      dailyLimitPct: num(e.target.value, 0)
+    })
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "Maks. Drawdown (%)"
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    step: "0.1",
+    value: account.maxDrawdownPct,
+    onChange: e => persistAccount({
+      ...account,
+      maxDrawdownPct: num(e.target.value, 0)
+    })
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "stat-row"
+  }, /*#__PURE__*/React.createElement(StatCard, {
+    label: "Güncel Bakiye",
+    value: `$${liveComputed.currentBalance.toLocaleString(undefined, {
+      maximumFractionDigits: 0
+    })}`
+  }), /*#__PURE__*/React.createElement(StatCard, {
+    label: "Toplam R",
+    value: `${liveComputed.totalR >= 0 ? "+" : ""}${fmt2(liveComputed.totalR)}`,
+    tone: liveComputed.totalR >= 0 ? "good" : "bad"
+  }), /*#__PURE__*/React.createElement(StatCard, {
+    label: "Kalan Günlük Risk",
+    value: `${fmt1(liveComputed.remainingDaily)}%`,
+    sub: `limit %${account.dailyLimitPct}`,
+    tone: liveComputed.remainingDaily > 1 ? "good" : "bad"
+  }), /*#__PURE__*/React.createElement(StatCard, {
+    label: "Kalan Drawdown Payı",
+    value: `${fmt1(liveComputed.remainingDD)}%`,
+    sub: `limit %${account.maxDrawdownPct}`,
+    tone: liveComputed.remainingDD > 2 ? "good" : "bad"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "dd-bars"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dd-bar-block"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dd-bar-label"
+  }, /*#__PURE__*/React.createElement("span", null, "Günlük Kullanım"), /*#__PURE__*/React.createElement("span", null, fmt1(liveComputed.todayLossPct), "% / ", account.dailyLimitPct, "%")), /*#__PURE__*/React.createElement("div", {
+    className: "bar-track bar-track-slim"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `bar-fill ${liveComputed.todayLossPct / account.dailyLimitPct > 0.8 ? "bar-danger" : ""}`,
+    style: {
+      width: `${Math.min(100, liveComputed.todayLossPct / (account.dailyLimitPct || 1) * 100)}%`
+    }
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "dd-bar-block"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dd-bar-label"
+  }, /*#__PURE__*/React.createElement("span", null, "Toplam Drawdown"), /*#__PURE__*/React.createElement("span", null, fmt1(liveComputed.currentDD), "% / ", account.maxDrawdownPct, "%")), /*#__PURE__*/React.createElement("div", {
+    className: "bar-track bar-track-slim"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `bar-fill ${liveComputed.currentDD / account.maxDrawdownPct > 0.8 ? "bar-danger" : ""}`,
+    style: {
+      width: `${Math.min(100, liveComputed.currentDD / (account.maxDrawdownPct || 1) * 100)}%`
+    }
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "panel-head",
+    style: {
+      marginTop: 24
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "panel-title",
+    style: {
+      fontSize: 15
+    }
+  }, "İşlemler"), /*#__PURE__*/React.createElement("button", {
+    className: "btn-gold",
+    onClick: () => setLiveFormOpen(v => !v)
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: liveFormOpen ? "x" : "plus",
+    size: 14
+  }), liveFormOpen ? "Kapat" : "Yeni İşlem")), liveFormOpen && /*#__PURE__*/React.createElement("div", {
+    className: "form-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "form-grid"
+  }, /*#__PURE__*/React.createElement(Field, {
+    label: "Tarih"
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "date",
+    value: liveDraft.date,
+    onChange: e => setLiveDraft({
+      ...liveDraft,
+      date: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "Parite"
+  }, /*#__PURE__*/React.createElement("select", {
+    value: liveDraft.pair,
+    onChange: e => setLiveDraft({
+      ...liveDraft,
+      pair: e.target.value
+    })
+  }, PAIRS.map(p => /*#__PURE__*/React.createElement("option", {
+    key: p
+  }, p)))), /*#__PURE__*/React.createElement(Field, {
+    label: "Yön"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dir-toggle"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: liveDraft.direction === "Long" ? "dir-on-long" : "",
+    onClick: () => setLiveDraft({
+      ...liveDraft,
+      direction: "Long"
+    })
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "trendUp",
+    size: 13
+  }), " Long"), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: liveDraft.direction === "Short" ? "dir-on-short" : "",
+    onClick: () => setLiveDraft({
+      ...liveDraft,
+      direction: "Short"
+    })
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "trendDown",
+    size: 13
+  }), " Short"))), /*#__PURE__*/React.createElement(Field, {
+    label: "Kill Zone"
+  }, /*#__PURE__*/React.createElement("select", {
+    value: liveDraft.killzone,
+    onChange: e => setLiveDraft({
+      ...liveDraft,
+      killzone: e.target.value
+    })
+  }, KILLZONES.map(k => /*#__PURE__*/React.createElement("option", {
+    key: k
+  }, k)))), /*#__PURE__*/React.createElement(Field, {
+    label: "Risk %"
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    step: "0.1",
+    value: liveDraft.riskPct,
+    onChange: e => setLiveDraft({
+      ...liveDraft,
+      riskPct: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "Sonuç"
+  }, /*#__PURE__*/React.createElement("select", {
+    value: liveDraft.result,
+    onChange: e => setLiveDraft({
+      ...liveDraft,
+      result: e.target.value
+    })
+  }, RESULTS.map(r => /*#__PURE__*/React.createElement("option", {
+    key: r
+  }, r)))), /*#__PURE__*/React.createElement(Field, {
+    label: "Elde Edilen R"
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    step: "0.1",
+    value: liveDraft.achievedR,
+    onChange: e => setLiveDraft({
+      ...liveDraft,
+      achievedR: e.target.value
+    })
+  })), /*#__PURE__*/React.createElement(Field, {
+    label: "Not",
+    span: 3
+  }, /*#__PURE__*/React.createElement("textarea", {
+    rows: 2,
+    value: liveDraft.note,
+    onChange: e => setLiveDraft({
+      ...liveDraft,
+      note: e.target.value
+    })
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "form-actions"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn-gold",
+    onClick: saveLiveDraft
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "save",
+    size: 14
+  }), " Save"))), /*#__PURE__*/React.createElement("div", {
+    className: "trade-list"
+  }, liveComputed.rows.length === 0 && /*#__PURE__*/React.createElement("div", {
+    className: "empty"
+  }, "Henüz canlı işlem yok."), liveComputed.rows.map(t => /*#__PURE__*/React.createElement("div", {
+    key: t.id,
+    className: "trade-row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "trade-row-main"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "tr-date"
+  }, t.date), /*#__PURE__*/React.createElement("span", {
+    className: "tr-pair"
+  }, t.pair), /*#__PURE__*/React.createElement("span", {
+    className: `tr-dir ${t.direction === "Long" ? "dir-long" : "dir-short"}`
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: t.direction === "Long" ? "trendUp" : "trendDown",
+    size: 12
+  }), " ", t.direction), /*#__PURE__*/React.createElement("span", {
+    className: "tr-kz"
+  }, t.killzone), /*#__PURE__*/React.createElement("span", {
+    className: `tr-result res-${t.result.toLowerCase()}`
+  }, t.result), /*#__PURE__*/React.createElement("span", {
+    className: "tr-r"
+  }, t.achievedR >= 0 ? "+" : "", fmt1(t.achievedR), "R"), /*#__PURE__*/React.createElement("span", {
+    className: "tr-pnl"
+  }, t.pnl >= 0 ? "+" : "", "$", t.pnl.toFixed(0)), /*#__PURE__*/React.createElement("button", {
+    className: "btn-ghost-danger btn-icon-only",
+    onClick: () => deleteTrade(t.id)
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "trash",
+    size: 12
+  }))))))));
 }
-
-ReactDOM.createRoot(document.getElementById("root")).render(<SMTPro />);
+ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.createElement(SMTPro, null));
 </script>
 </body>
 </html>
